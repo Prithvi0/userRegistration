@@ -24,7 +24,7 @@ function firstLastNameValid () {
 
 # FUNCTION FOR GENERAL E-MAIL VALIDATION (Eg. abc.xyz@bl.co.in)
 function emailValid () {
-	emailPattern="^[a-zA-Z]+[\.]?[a-zA-Z]*\@[a-z]{2,}\.([a-z]{2,4}\.)?[a-z]{2,4}$"		# GENERAL E-MAIL VALIDATION
+	emailPattern="^[a-zA-Z]+[\.]?[a-zA-Z]*\@[a-z]{2,}\.([a-z]{2,4}\.)?[a-z]{2,4}$"	# GENERAL E-MAIL VALIDATION PATTERN
 	read -p "Enter an E-mail to validate: " email
 	if [[ $email =~ $emailPattern ]]
 	then
@@ -34,6 +34,19 @@ function emailValid () {
 	fi
 }
 
+# FUNCTION TO VALIDATE PRE-DEFINED MOBILE FORMAT (Eg. 91 9999999999)
+function mobileNumberFormat () {
+	mobileNumberPattern="^[\+]?(91){1}[ ]?[6-9]{1}[0-9]{9}$"	# GENERAL MOBILE NUMBER VALIDATION PATTERN
+	read -p "Enter a mobile number to validate: " mobileNumber
+	if [[ $mobileNumber =~ $mobileNumberPattern ]]
+	then
+		printf "Valid mobile number\n"
+	else
+		printf "In-valid mobile number\n"
+	fi
+}
+
 # CALLING THE FUNCTIONS
 firstLastNameValid
 emailValid
+mobileNumberFormat
