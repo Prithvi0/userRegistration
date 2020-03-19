@@ -25,9 +25,9 @@ function firstLastNameValid () {
 	fi
 }
 
-# FUNCTION FOR GENERAL E-MAIL VALIDATION (Eg. abc.xyz@bl.co.in)
+# FUNCTION FOR E-MAIL VALIDATION (Eg. abc.xyz@bl.co.in)
 function emailValid () {
-	emailPattern="^[a-zA-Z]+[\.]?[a-zA-Z]*\@[a-z]{2,}\.([a-z]{2,4}\.)?[a-z]{2,4}$"	# GENERAL E-MAIL VALIDATION PATTERN
+	emailPattern="^([a-zA-Z0-9_-\.\+]+)@([a-zA-Z0-9_-\.\+]+)\.([a-z]{2,4})$"	# E-MAIL VALIDATION PATTERN
 	read -p "Enter an E-mail to validate: " email
 	if [[ $email =~ $emailPattern ]]
 	then
@@ -65,7 +65,7 @@ function passwordFormat () {
 }
 
 # CALLING THE FUNCTIONS
-firstLastNameValid
+#firstLastNameValid
 emailValid
-mobileNumberFormat
-passwordFormat
+#mobileNumberFormat
+#passwordFormat
