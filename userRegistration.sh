@@ -46,13 +46,14 @@ function mobileNumberFormat () {
 	fi
 }
 
-# FUNCTION TO VALIDATE PRE-DEFINED PASSWORD RULE3 - ATLEAST 1 NUMERIC
+# FUNCTION TO VALIDATE PRE-DEFINED PASSWORD
 function passwordFormat () {
-	passwordLength="^.{8,}"		# ATLEAST 8 CHARACTERS LONG
-	passwordUpperPattern="[A-Z]+"	# ATLEAST 1 UPPERCASE LETTER
-	passwordNumericPattern="[0-9]+"	# ATLEAST 1 NUMERIC
+	passwordLength="[A-Za-z0-9@#$%&=_.-]{8,}$"			# ATLEAST 8 CHARACTERS LONG
+	upperCase="^[A-Za-z0-9@#$%&=_.-]*[A-Z]+[A-Za-z0-9@#$%&=_.-]*$"	# ATLEAST 1 UPPERCASE LETTER
+	numeric="^[A-Za-z0-9@#$%&=_.-]*[0-9]+[A-Za-z0-9@#$%&=_.-]*$"	# ATLEAST 1 NUMERIC
+	specialChar="[@#$%&=_.-]+"					# ATLEAST 1 SPECIAL CHARACTER
 	read -p "Enter a password of minimum 8 characters: " password
-	if [[ $password =~ $passwordLength && $password =~ $passwordUpperPattern && $password =~ $passwordNumericPattern ]]
+	if [[ $password =~ $passwordLength && $password =~ $upperCase && $password =~ $numeric && $password =~ $specialChar ]]
 	then
 		printf "Valid password\n"
 	else
