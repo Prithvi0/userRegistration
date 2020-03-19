@@ -39,7 +39,7 @@ function emailValid () {
 
 # FUNCTION TO VALIDATE PRE-DEFINED MOBILE FORMAT (Eg. 91 9999999999)
 function mobileNumberFormat () {
-	mobileNumberPattern="^[\+]?($COUNTRY_CODE){1}[ ]?[6-9]{1}[0-9]{9}$"		# GENERAL MOBILE NUMBER VALIDATION PATTERN
+	mobileNumberPattern="^[\+]?($COUNTRY_CODE){1}[ ]?[6-9]{1}[0-9]{9}$"	# GENERAL MOBILE NUMBER VALIDATION PATTERN
 	read -p "Enter a mobile number to validate: " mobileNumber
 	if [[ $mobileNumber =~ $mobileNumberPattern ]]
 	then
@@ -65,7 +65,7 @@ function passwordFormat () {
 }
 
 # CALLING THE FUNCTIONS
-#firstLastNameValid
+firstLastNameValid
 emailValid
-#mobileNumberFormat
-#passwordFormat
+mobileNumberFormat
+passwordFormat
