@@ -46,7 +46,20 @@ function mobileNumberFormat () {
 	fi
 }
 
+# FUNCTION TO VALIDATE PRE-DEFINED PASSWORD RULE1 - MINIMUM 8 CHARACTERS
+function passwordFormat () {
+	passwordFormat="^.{8,}$"	# MINIMUM 8 CHARACTERS VALIDATION PATTERN
+	read -p "Enter a password of minimum 8 characters: " password
+	if [[ $password =~ $passwordFormat ]]
+	then
+		printf "Valid password\n"
+	else
+		printf "Invalid password\n"
+	fi
+}
+
 # CALLING THE FUNCTIONS
 firstLastNameValid
 emailValid
 mobileNumberFormat
+passwordFormat
