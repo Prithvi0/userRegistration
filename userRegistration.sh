@@ -1,6 +1,7 @@
 #!/bin/bash -x
 printf "Welcome to User Registration\n"
 
+shopt -s extglob
 # FUNCTION FOR FIRST AND LAST NAME
 function firstLastNameValid () {
 	pattern="^[A-Z]{1}[a-z]{2,}$" # VALID PATTERN FOR FIRST LETTER CAPITAL AND LENGTH OF ATLEAST 3 CHARACTERS
@@ -36,7 +37,7 @@ function emailValid () {
 
 # FUNCTION TO VALIDATE PRE-DEFINED MOBILE FORMAT (Eg. 91 9999999999)
 function mobileNumberFormat () {
-	mobileNumberPattern="^[\+]?(91){1}[ ]?[6-9]{1}[0-9]{9}$"	# GENERAL MOBILE NUMBER VALIDATION PATTERN
+	mobileNumberPattern="^[\+]?(91){1}[ ]?[6-9]{1}[0-9]{9}$"			# GENERAL MOBILE NUMBER VALIDATION PATTERN
 	read -p "Enter a mobile number to validate: " mobileNumber
 	if [[ $mobileNumber =~ $mobileNumberPattern ]]
 	then
@@ -46,11 +47,12 @@ function mobileNumberFormat () {
 	fi
 }
 
-# FUNCTION TO VALIDATE PRE-DEFINED PASSWORD RULE1 - MINIMUM 8 CHARACTERS
+# FUNCTION TO VALIDATE PRE-DEFINED PASSWORD RULE2 - ATLEAST 1 UPPERCASE LETTER
 function passwordFormat () {
-	passwordFormat="^.{8,}$"	# MINIMUM 8 CHARACTERS VALIDATION PATTERN
+	passwordLength="^.{8,}"		# ATLEAST 8 CHARACTERS LONG
+	passwordPattern="[A-Z]+"	# ATLEAST 1 UPPERCASE LETTER
 	read -p "Enter a password of minimum 8 characters: " password
-	if [[ $password =~ $passwordFormat ]]
+	if [[ $password =~ $passwordLength && $password =~ $passwordPattern ]]
 	then
 		printf "Valid password\n"
 	else
