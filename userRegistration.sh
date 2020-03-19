@@ -1,6 +1,9 @@
 #!/bin/bash -x
 printf "Welcome to User Registration\n"
 
+# CONSTANTS
+COUNTRY_CODE=91
+
 # FUNCTION FOR FIRST AND LAST NAME
 function firstLastNameValid () {
 	pattern="^[A-Z]{1}[a-z]{2,}$" # VALID PATTERN FOR FIRST LETTER CAPITAL AND LENGTH OF ATLEAST 3 CHARACTERS
@@ -36,7 +39,7 @@ function emailValid () {
 
 # FUNCTION TO VALIDATE PRE-DEFINED MOBILE FORMAT (Eg. 91 9999999999)
 function mobileNumberFormat () {
-	mobileNumberPattern="^[\+]?(91){1}[ ]?[6-9]{1}[0-9]{9}$"			# GENERAL MOBILE NUMBER VALIDATION PATTERN
+	mobileNumberPattern="^[\+]?($COUNTRY_CODE){1}[ ]?[6-9]{1}[0-9]{9}$"		# GENERAL MOBILE NUMBER VALIDATION PATTERN
 	read -p "Enter a mobile number to validate: " mobileNumber
 	if [[ $mobileNumber =~ $mobileNumberPattern ]]
 	then
@@ -48,10 +51,10 @@ function mobileNumberFormat () {
 
 # FUNCTION TO VALIDATE PRE-DEFINED PASSWORD
 function passwordFormat () {
-	passwordLength="[A-Za-z0-9@#$%&=_.-]{8,}$"			# ATLEAST 8 CHARACTERS LONG
-	upperCase="^[A-Za-z0-9@#$%&=_.-]*[A-Z]+[A-Za-z0-9@#$%&=_.-]*$"	# ATLEAST 1 UPPERCASE LETTER
-	numeric="^[A-Za-z0-9@#$%&=_.-]*[0-9]+[A-Za-z0-9@#$%&=_.-]*$"	# ATLEAST 1 NUMERIC
-	specialChar="[@#$%&=_.-]+"					# ATLEAST 1 SPECIAL CHARACTER
+	passwordLength=".*{8,}$"				# ATLEAST 8 CHARACTERS LONG
+	upperCase="[A-Z]+"					# ATLEAST 1 UPPERCASE LETTER
+	numeric="[0-9]+"					# ATLEAST 1 NUMERIC
+	specialChar="^[A-Za-z0-9]*[@#$%&=_-][A-Za-z0-9]*$"	# EXACT 1 SPECIAL CHARACTER
 	read -p "Enter a password of minimum 8 characters: " password
 	if [[ $password =~ $passwordLength && $password =~ $upperCase && $password =~ $numeric && $password =~ $specialChar ]]
 	then
