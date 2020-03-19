@@ -1,7 +1,6 @@
 #!/bin/bash -x
 printf "Welcome to User Registration\n"
 
-shopt -s extglob
 # FUNCTION FOR FIRST AND LAST NAME
 function firstLastNameValid () {
 	pattern="^[A-Z]{1}[a-z]{2,}$" # VALID PATTERN FOR FIRST LETTER CAPITAL AND LENGTH OF ATLEAST 3 CHARACTERS
@@ -47,7 +46,7 @@ function mobileNumberFormat () {
 	fi
 }
 
-# FUNCTION TO VALIDATE PRE-DEFINED PASSWORD RULE2 - ATLEAST 1 UPPERCASE LETTER
+# FUNCTION TO VALIDATE PRE-DEFINED PASSWORD RULE3 - ATLEAST 1 NUMERIC
 function passwordFormat () {
 	passwordLength="^.{8,}"		# ATLEAST 8 CHARACTERS LONG
 	passwordPattern="[A-Z]+"	# ATLEAST 1 UPPERCASE LETTER
